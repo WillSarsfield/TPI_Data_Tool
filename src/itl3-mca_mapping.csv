@@ -1,0 +1,63 @@
+mca,mcaname,itl3,itl3name
+E47000001,Greater Manchester,TLD36,Greater Manchester North West
+E47000001,Greater Manchester,TLD37,Greater Manchester North East
+E47000001,Greater Manchester,TLD33,Manchester
+E47000001,Greater Manchester,TLD34,Greater Manchester South West
+E47000001,Greater Manchester,TLD35,Greater Manchester South East
+E47000002,South Yorkshire,TLE31,"Barnsley, Doncaster and Rotherham"
+E47000002,South Yorkshire,TLE32,Sheffield
+E47000003,West Yorkshire,TLE41,Bradford
+E47000003,West Yorkshire,TLE44,Calderdale and Kirklees
+E47000003,West Yorkshire,TLE42,Leeds
+E47000003,West Yorkshire,TLE45,Wakefield
+E47000004,Liverpool City Region,TLD71,East Merseyside
+E47000004,Liverpool City Region,TLD72,Liverpool
+E47000004,Liverpool City Region,TLD73,Sefton
+E47000004,Liverpool City Region,TLD74,Wirral
+E47000006,Tees Valley,TLC11,Hartlepool and Stockton-on-Tees
+E47000006,Tees Valley,TLC12,South Teesside
+E47000006,Tees Valley,TLC13,Darlington
+E47000007,West Midlands,TLG31,Birmingham
+E47000007,West Midlands,TLG33,Coventry
+E47000007,West Midlands,TLG36,Dudley
+E47000007,West Midlands,TLG37,Sandwell
+E47000007,West Midlands,TLG32,Solihull
+E47000007,West Midlands,TLG38,Walsall
+E47000007,West Midlands,TLG39,Wolverhampton
+E47000008,Cambridgeshire and Peterborough,TLH11,Peterborough
+E47000008,Cambridgeshire and Peterborough,TLH12,Cambridgeshire CC
+E47000009,West of England,TLK12,"Bath and North East Somerset, North Somerset and South Gloucestershire"
+E47000009,West of England,TLK11,"Bristol, City of"
+E47000012,York and North Yorkshire,TLE21,York
+E47000012,York and North Yorkshire,TLE22,North Yorkshire CC
+E47000013,East Midlands,TLF11,Derby
+E47000013,East Midlands,TLF14,Nottingham
+E47000013,East Midlands,TLF13,South and West Derbyshire
+E47000013,East Midlands,TLF12,East Derbyshire
+E47000013,East Midlands,TLF15,North Nottinghamshire
+E47000013,East Midlands,TLF16,South Nottinghamshire
+E47000014,North East,TLC14,Durham
+E47000014,North East,TLC21,Northumberland
+E47000014,North East,TLC22,Tyneside
+E47000014,North East,TLC23,Sunderland
+E61000001,Greater London,TLI31,Camden and City of London
+E61000001,Greater London,TLI32,Westminster
+E61000001,Greater London,TLI33,Kensington & Chelsea and Hammersmith & Fulham
+E61000001,Greater London,TLI34,Wandsworth
+E61000001,Greater London,TLI41,Hackney and Newham
+E61000001,Greater London,TLI42,Tower Hamlets
+E61000001,Greater London,TLI43,Haringey and Islington
+E61000001,Greater London,TLI44,Lewisham and Southwark
+E61000001,Greater London,TLI45,Lambeth
+E61000001,Greater London,TLI51,Bexley and Greenwich
+E61000001,Greater London,TLI52,Barking & Dagenham and Havering
+E61000001,Greater London,TLI53,Redbridge and Waltham Forest
+E61000001,Greater London,TLI54,Enfield
+E61000001,Greater London,TLI61,Bromley
+E61000001,Greater London,TLI62,Croydon
+E61000001,Greater London,TLI63,"Merton, Kingston upon Thames and Sutton"
+E61000001,Greater London,TLI71,Barnet
+E61000001,Greater London,TLI72,Brent
+E61000001,Greater London,TLI73,Ealing
+E61000001,Greater London,TLI74,Harrow and Hillingdon
+E61000001,Greater London,TLI75,Hounslow and Richmond upon Thames
