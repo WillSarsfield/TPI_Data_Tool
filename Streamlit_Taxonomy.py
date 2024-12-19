@@ -130,28 +130,28 @@ def main():
 
     #Sidebar logo 
     #Embed the logo as HTML. This allows the logo to also be a link, and stops Streamlit showing the 'enlarge image' icon 
-    st.sidebar.html("<a href='https://lab.productivity.ac.uk' alt='The Productivity Lab'><img src='app/static/TPI_Lab_transp.png' width='200'></a>")
+    st.sidebar.html("<a href='https://lab.productivity.ac.uk' alt='The Productivity Lab'></a>")
 
     #Back button
     #Embed the button as styled HTML. This stops the link opening in a new tab (like st.link_button enforces)
-    st.markdown("""
-        <style>
-            a.btn {
-                color: rgb(49, 51, 63);
-                border: 1px solid rgba(49, 51, 63, 0.2);
-                background-color: rgb(249, 249, 251);
-                border-radius: 6px;
-                padding: 8px 12px;
-                text-decoration: none;
-            }
-            a.btn:hover {
-                color: rgb(255, 75, 75);
-                border: 1px solid rgb(255, 75, 75);
-            }
-        </style>
-        """, unsafe_allow_html=True)
+    # st.markdown("""
+    #     <style>
+    #         a.btn {
+    #             color: rgb(49, 51, 63);
+    #             border: 1px solid rgba(49, 51, 63, 0.2);
+    #             background-color: rgb(249, 249, 251);
+    #             border-radius: 6px;
+    #             padding: 8px 12px;
+    #             text-decoration: none;
+    #         }
+    #         a.btn:hover {
+    #             color: rgb(255, 75, 75);
+    #             border: 1px solid rgb(255, 75, 75);
+    #         }
+    #     </style>
+    #     """, unsafe_allow_html=True)
 
-    st.sidebar.html("<a class='btn' href='https://lab.productivity.ac.uk/tools/uk-regional-productivity-growth/'>Back to the Productivity Lab</a>")
+    # st.sidebar.html("<a class='btn' href='https://lab.productivity.ac.uk/tools/uk-regional-productivity-growth/'>Back to the Productivity Lab</a>")
 
     #Alternative logo
     # Add an app logo. This is the new 'official' way to add logos. The logo still appears when the sidebar is collapsed (you can use 'icon_image' to specify a smaller version, if preferred). 
@@ -318,12 +318,15 @@ def main():
 
             **Time Period:** Users can specify the start and end years for the data they want to analyze. This allows for the exploration of productivity trends for a specific timeframe.
 
-            **Geographical Aggregation Level (ITL):** Users can choose the level of geographical aggregation for the data. There are three ITL levels available:
+            **Geographical Aggregation Level (ITL/MCA):** Users can choose the level of geographical aggregation for the data. There are three ITL levels available as well as the Mayoral Combined Authority level:
             - **ITL Level 1:** This is the highest level of aggregation, encompassing the 12 English Regions and Devolved Nations of the United Kingdom.
             - **ITL Level 2:** This level offers the intermediate level of geographic aggregation with 41 regions covering the UK.
             - **ITL Level 3:** This is the lowest level of aggregation, comprising 179 regions covering the UK in more detail.
+            - **MCA Level:** This level of aggregation covers 12 English regions so far, and are made up of ITL3 regions.
 
             **Select ITL1 Region(s):** Users can narrow down their analysis by selecting specific ITL1 regions. Upon selecting an ITL1 region, all underlying regions associated with that ITL1 region will be automatically included in the analysis, according to the previously chosen geographical aggregation level.
+
+            **Select colour level:** Users can decide at which aggregation level they want the data to be coloured at. Levels below the selected aggregation cannot be coloured as this would result in an overlap or misrepresentation of the data.
 
             **Customize selection of regions (optional) *requires a minimum of two regions*:** The dropdown box allows users to choose regions from a list. This list includes only those regions that can be derived from the previously chosen geographical aggregation level and the selected ITL1 regions. This ensures that users are presented with relevant options based on their previous selections.
 
@@ -339,10 +342,15 @@ def main():
 
             **Show labels:** Shows or hides the names for each of the selected regions. The names are hidden by default.
 
+            **Toggle population bubbles:** This changes the size of the data points based on their working population in 2021 relative to the selected points.
+
             **Add label for selected regions:** The names for selected regions can be added to the graph.
 
             **Set axes manually:** This option allows users to manually set the range for nominal productivity per hour worked on the x-axis, as well as the range for productivity growth on the y-axis. By default this option is disabled, and the axes automatically rescale dependent on the selection of the data. Manually setting the axes can be used to remove outliers from view or prevent the axes from automatically rescaling during animation.
 
+            **Set number of transition frames:** This allows the user to control the number of linearly-interpolated frames to show in-between the years of data when animating, giving an animation type effect. Default is 0, making the animation appear as a slideshow.
+
+            **Set delay between transitions:** This controls the time between frames in the animation.
 
             #### Additional Options
 
@@ -350,7 +358,6 @@ def main():
             - **Animate start year:** Creates a time-lapse of the figure, by incrementing the start year, leaving the end year unchanged.
             - **Animate end year:** Creates a time-lapse of the figure, by incrementing the end year, leaving the start year unchanged.
             - **Animate period:** Creates a time-lapse of the figure, by keeping the interval for productivity change constant, and incrementing both the start and end year.
-            - **Download PDF:** Downloads a PDF file of the current graph.
 
             It is also possible to interact directly with the figure. Hover over individual data points to show the information for that region or zoom in on a specific clusters of scatter points by drawing a rectangle with the mouse. In addition, when hovering over the figure a menu the top right will appear. From this menu it is possible to select additional options such as *panning, zooming,* or *enlarging* the figure to fill the screen. Lastly, from this menu it is possible to save the figure, including the manual changes, as a png image.
 
@@ -392,7 +399,7 @@ def main():
     with col2: play_start = st.button(label = 'Animate start year', type="primary", use_container_width=True)
     with col2: play_end = st.button(label = 'Animate end year', type="primary", use_container_width=True)
     with col2: play_period = st.button(label = 'Animate period', type="primary", use_container_width=True)
-    with col2: download_pdf = st.button(label="Export to PDF", type="primary", use_container_width=True)
+    # with col2: download_pdf = st.button(label="Export to PDF", type="primary", use_container_width=True)
 
     #Create placeholder for the figure, which can be overwritten, but we need to use the container for that
     with col1: figure = st.empty()
@@ -708,34 +715,34 @@ def main():
         st.plotly_chart(fig, use_container_width=True)
         print("Runtime constructing figure: " + str(int((time.time() - t0)*1000)) + " miliseconds")
 
-    if download_pdf:
-        t0 = time.time()
-        # Create an in-memory buffer
-        buffer = io.BytesIO()
+    # if download_pdf:
+    #     t0 = time.time()
+    #     # Create an in-memory buffer
+    #     buffer = io.BytesIO()
     
-        try:
-            print('Saving fig')
-            # Save the figure as a PDF to the buffer
-            fig.write_image(file=buffer, format="pdf")
-            print('Saved')
-            # Reset buffer position to the start
-            buffer.seek(0)
-            # Provide the PDF file for download
-            st.download_button(
-                label="Click here to download your plot as PDF",
-                data=buffer,
-                file_name="figure.pdf",
-                mime="application/pdf",
-                use_container_width=True,
-            )
-            print("PDF generated successfully!")
+    #     try:
+    #         print('Saving fig')
+    #         # Save the figure as a PDF to the buffer
+    #         fig.write_image(file=buffer, format="pdf")
+    #         print('Saved')
+    #         # Reset buffer position to the start
+    #         buffer.seek(0)
+    #         # Provide the PDF file for download
+    #         st.download_button(
+    #             label="Click here to download your plot as PDF",
+    #             data=buffer,
+    #             file_name="figure.pdf",
+    #             mime="application/pdf",
+    #             use_container_width=True,
+    #         )
+    #         print("PDF generated successfully!")
             
-        except Exception as e:
-            print(f"An error occurred: {e}")
+    #     except Exception as e:
+    #         print(f"An error occurred: {e}")
         
-        finally:
-            buffer.close()  # Ensure the buffer is properly closed
-        print("Runtime pdf buffering: " + str(int((time.time() - t0)*1000)) + " miliseconds")
+    #     finally:
+    #         buffer.close()  # Ensure the buffer is properly closed
+    #     print("Runtime pdf buffering: " + str(int((time.time() - t0)*1000)) + " miliseconds")
 
 
 
