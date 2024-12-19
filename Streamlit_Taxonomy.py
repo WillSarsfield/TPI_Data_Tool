@@ -214,18 +214,19 @@ def main():
 
     selected_regions = st.sidebar.multiselect('Select ITL1 region(s):', options = list(itlmapping['itl1name'].unique()) + ['All'], default = 'All')
 
-    # Get unique colour options from selected levels
-    available_color_levels = set(level_options_mapping[levels[0]])
-    for level in levels[1:]:
-        available_color_levels &= set(level_options_mapping[level])
-
-    color_level = st.sidebar.selectbox('Select colour level:', options=sorted(available_color_levels))
 
     if 'All' in selected_regions or selected_regions == []:
         selected_regions = list(itlmapping['itl1name'].unique())
 
     if levels == []:
         levels = ['ITL3']
+    
+    # Get unique colour options from selected levels
+    available_color_levels = set(level_options_mapping[levels[0]])
+    for level in levels[1:]:
+        available_color_levels &= set(level_options_mapping[level])
+
+    color_level = st.sidebar.selectbox('Select colour level:', options=sorted(available_color_levels))
     
     regs = []
     for level in levels:
